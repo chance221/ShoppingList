@@ -36,18 +36,25 @@ function handleClicks(){
         addItems(itemValue);
     });
     
-    
+    toggleChecked();
+    deleteItems();
     
     
 }
 
 function toggleChecked(){
-        $(".shopping-list").on('click', $(".shopping-item-toggle"), function(event){
-            
-            alert("this is working")
-            $(this).closest('span').toggleClass('shopping-item__checked')
-        });
+    $(".shopping-list").on('click', "li > div > .shopping-item-toggle", function(event){
+             
+        $(this).closest('li').find('.shopping-item').toggleClass("shopping-item__checked");
+         
+    });
+}
+
+function deleteItems(){
+    $(".shopping-list").on('click', "li > div > .shopping-item-delete", function(event){
+        $(this).closest('li').remove();
+    })
 }
 
 handleClicks();
-toggleChecked();
+
